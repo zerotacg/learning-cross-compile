@@ -28,11 +28,6 @@ RUN wget --output-document=/tmp/cmake.sh https://github.com/Kitware/CMake/releas
     && sh /tmp/cmake.sh --skip-license --prefix="$CMAKE_INSTALL_DIR" \
     && ln --symbolic --force "$CMAKE_INSTALL_DIR/bin/cmake" /usr/local/bin/cmake
 
-RUN git clone --depth 1 --branch $OPENSSL_VERSION https://github.com/openssl/openssl.git /opt/openssl \
-    && cd /opt/openssl \
-    && ./Configure mingw --cross-compile-prefix=i686-w64-mingw32- --prefix=/usr/i686-w64-mingw32 \
-    && make install
-
 
 RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
