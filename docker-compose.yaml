@@ -1,0 +1,6 @@
+services:
+  devcontainer:
+    image: "zerotacg/learning-cross-compile-devcontainer"
+    build: .devcontainer
+    volumes:
+      - ".:/home/app/source"
