@@ -25,6 +25,7 @@ jobs:
       run: |
         sudo apt update
         sudo apt install --yes \
+        ccache \
         mingw-w64 \
         mingw-w64-tools \
         ninja-build
