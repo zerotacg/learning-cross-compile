@@ -21,8 +21,15 @@ jobs:
       shell: bash
       run: |
         echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
+        echo "hunter-dir=${{ github.workspace }}/.hunter" >> "$GITHUB_OUTPUT"
         echo "cmake-version=3.27.9" >> "$GITHUB_OUTPUT"
         echo "cmake-install-dir=/opt/cmake-3.27.9" >> "$GITHUB_OUTPUT"
+
+    - name: Cache Hunter Dependencies
+      uses: actions/cache@v3.3.2
+      with:
+        path: ${{ steps.strings.outputs.hunter-dir }}
+        key: hunter-cache
 
     - name: Dependencies
       run: |
@@ -43,8 +50,10 @@ jobs:
 
     - name: Configure CMake
       run: >
-        cmake -B ${{ steps.strings.outputs.build-output-dir }}
+        cmake
+        -B ${{ steps.strings.outputs.build-output-dir }}
         -S ${{ github.workspace }}
+        -DHUNTER_ROOT=${{ steps.strings.outputs.hunter-dir }}
         --preset default
 
     - name: Build
