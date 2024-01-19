@@ -16,5 +16,5 @@ HUNTER_ADD_PACKAGE(OpenSSL)
 FIND_PACKAGE(OpenSSL REQUIRED)
 FIND_PACKAGE(CURL CONFIG REQUIRED)
 
-add_executable(cross_compile src/main.cpp)
+add_executable(cross_compile WIN32 MACOSX_BUNDLE src/main.cpp)
 target_link_libraries(cross_compile OpenSSL::SSL CURL::libcurl)
