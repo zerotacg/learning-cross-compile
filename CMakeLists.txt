@@ -16,6 +16,7 @@ HUNTER_ADD_PACKAGE(OpenAL)
 HUNTER_ADD_PACKAGE(OpenSSL)
 
 FIND_PACKAGE(OpenSSL REQUIRED)
+FIND_PACKAGE(OpenAL REQUIRED)
 
 add_executable(cross_compile src/main.cpp)
 target_link_libraries(cross_compile OpenSSL::SSL OpenAL::OpenAL)
