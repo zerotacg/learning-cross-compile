@@ -1,6 +1,4 @@
-cmake_minimum_required(VERSION 3.24)
-
-cmake_policy(SET CMP0144 NEW)
+cmake_minimum_required(VERSION 3.23)
 
 include("cmake/HunterGate.cmake")
 HunterGate(
@@ -13,11 +11,9 @@ project(cross_compile)
 
 set(CMAKE_CXX_STANDARD 17)
 
-HUNTER_ADD_PACKAGE(OpenAL)
 HUNTER_ADD_PACKAGE(OpenSSL)
 
 FIND_PACKAGE(OpenSSL REQUIRED)
-FIND_PACKAGE(OpenAL REQUIRED)
 
 add_executable(cross_compile src/main.cpp)
-target_link_libraries(cross_compile OpenSSL::SSL OpenAL::OpenAL)
+target_link_libraries(cross_compile OpenSSL::SSL)
