@@ -33,11 +33,6 @@ jobs:
         sudo mkdir ${{ steps.strings.outputs.cmake-install-dir }}
         sudo sh /tmp/cmake.sh --skip-license --prefix=${{ steps.strings.outputs.cmake-install-dir }}
         sudo ln --symbolic --force ${{ steps.strings.outputs.cmake-install-dir }}/bin/cmake /usr/local/bin/cmake
-        git clone --depth 1 --branch OpenSSL_1_1_1g https://github.com/openssl/openssl.git
-        cd openssl
-        ./Configure mingw --cross-compile-prefix=i686-w64-mingw32- --prefix=/usr/i686-w64-mingw32
-        make
-        sudo make install
 
     - name: Configure CMake
       run: >
