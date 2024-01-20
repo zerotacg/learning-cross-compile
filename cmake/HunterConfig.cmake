@@ -1,4 +1,0 @@
-hunter_config(OpenSSL
-        VERSION "3.0.12"
-        CMAKE_ARGS "CMAKE_POLICY_DEFAULT_CMP0132:STRING=OLD"
-)

@@ -1,10 +1,11 @@
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.24)
+
+cmake_policy(SET CMP0132 OLD)
 
 include("cmake/HunterGate.cmake")
 HunterGate(
     URL "https://github.com/cpp-pm/hunter/archive/v0.25.3.tar.gz"
     SHA1 "0dfbc2cb5c4cf7e83533733bdfd2125ff96680cb"
-    FILEPATH "${CMAKE_CURRENT_LIST_DIR}/cmake/HunterConfig.cmake"
 )
 
 project(cross_compile)
