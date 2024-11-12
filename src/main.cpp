@@ -4,8 +4,12 @@
 int main() {
     std::cout << "Creating ssl context" << std::endl;
 
-    unsigned char hash[32];
-    SHA256("my hash input", sizeof hash, hash);
+    const std::string input = "my hash input";
+    unsigned char hash[SHA256_DIGEST_LENGTH];
+    auto result = SHA256(input.c_str(), input.length(), hash);
+    if (result == nullptr) {
+        std::cerr << "error calculating hash" << std::endl;
+    }
 
     std::cout << "hash is: " << std::hex;
     for (const auto &e: hash) {
