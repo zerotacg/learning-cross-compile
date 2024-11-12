@@ -2,7 +2,7 @@
 #include <openssl/sha.h>
 
 int main() {
-    std::cout << "Creating ssl context" << std::endl;
+    std::cout << "Computing SHA-256 hash" << std::endl;
 
     const std::string input = "my hash input";
     unsigned char hash[SHA256_DIGEST_LENGTH];
